@@ -156,7 +156,7 @@
 
 ## import（ESM）
 
-* 名前付きエクスポート
+* 名前付きエクスポート ( named export )
 
     + 変数、関数、オブジェクト、クラスの宣言文の先頭に `export` をつけると外部から利用できるようになる
     + インポートするためにはエクスポートされた定義された名前を知っている必要がある。
@@ -204,6 +204,13 @@
         export {name, getName, date, car, Person};        
         ```
 
+        `export` 文の中かっこの中では、`as` キーワードを使うことで、名前を変更することができる
+
+        ```JavaScript
+        export {name as n, getName as func, date as d,
+                car as c, Person as cls};        
+        ```
+
     + `export` で定義した変数名や関数名を指定してインポートする
 
         main.mjs
@@ -220,9 +227,12 @@
 
     + インポートする変数名を指定
 
+        `import` 文の中かっこの中では、`as` キーワードを使うことで、名前を変更することができる
+
         main.mjs
         ```JavaScript
-        import {name as n, getName as func, date as d, car as c, Person as cls} from "./sub.mjs";
+        import {name as n, getName as func, date as d,
+                car as c, Person as cls} from "./sub.mjs";
 
         console.log(n);
         func();
@@ -258,7 +268,7 @@
 
         ```node --experimental-modules main.mjs```
 
-* デフォルトエクスポート
+* デフォルトエクスポート ( Default exports )
 
     + １つのモジュールに対して１つのだけ `default`を付与できる
     + `default` の `export` では名前を付けない関数や配列・オブジェクトなどをモジュール化できる
@@ -318,6 +328,15 @@
     p.hello();
     ```
 
+    `import` 文は以下のように書くこともできる
+    ```JavaScript
+    import { default as a } from "./sub_name.mjs";
+    import { default as b } from "./sub_date.mjs";
+    import { default as c } from "./sub_get_name.mjs";
+    import { default as d } from "./sub_car.mjs";
+    import { default as e } from "./sub_person.mjs";
+    ```
+
     実行結果
     ```
     $ node main.mjs
@@ -326,6 +345,7 @@
     { name: 'GT-R', power: 570 }
     Hello, 太郎!
     ```
+
 
 * 名前付きインポート + デフォルトインポート
 
@@ -348,9 +368,32 @@
     hoge();
     ```
 
+    `import` 文は以下のように書くこともできる
+    ```JavaScript
+    import { default as fuga, hoge } from './sub.mjs'
+    ```
+
     実行結果
     ```
     $ node main.mjs
     fuga
     hoge
+    ```
+
+## 補足
+
++ `import`/`export` 文は {...} の中では動作しない
+
+    例えば、以下のような条件付きのインポートは動作しない
+    ```
+    if (something) {
+        import {sayHi} from "./say.js";
+    }
+    ```
+* 変数や関数の宣言と同様に、`import` 文は巻き上げ（ホイスティング: hoisting）が発生する
+
+    例えば、`import` した変数を `import` 文より前で使うことができる。
+    ```
+    console.log(xxx);
+    import xxx from "./hoge";
     ```
