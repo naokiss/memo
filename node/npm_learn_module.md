@@ -1,14 +1,4 @@
-# モジュール化
-
-## モジュールの種類
-
-+ コアモジュール
-    - `Node.js` に標準に組み込まれているモジュール
-+ `npm` モジュール
-    - サードパーティ製の外部ライブラリ
-    - `npm` コマンドと `package.json` による自動管理
-+ ファイルモジュール
-    - 自作モジュール
+# モジュールを作ってみよう
 
 ## `require` と `import/export` について
 
@@ -23,16 +13,8 @@
     + `es2015(ES6)` で決められた仕様で、JavaScriptにおけるモジュール機能
     + `Chrome` や `Firefox` など ES6対応ブラウザで利用可能
     + 対応していないブラウザで利用するには モジュールバンドルツールなどで変換する
-    + 拡張子は `.mjs`
-    + `Node.js 13.2.0` 以前のバージョンでは、`--experimental-modules`フラグ付きで起動したときのみ、`ECMAScript Modules`をサポートしていたが、`13.2.0`からフラグなしで `import` が可能になった
 
-## モジュールバンドルツール
-
-* Babel
-* Webpack
-* Laravel Mix
-
-## require（CJS）
+## require（CommonJS）モジュールを作成する
 
 * `exports` オブジェクト
 
@@ -154,7 +136,7 @@
     Hello, 太郎!
     ```
 
-## import（ESM）
+## import（ES Modules）モジュールを作成する
 
 * 名前付きエクスポート ( named export )
 
@@ -378,22 +360,4 @@
     $ node main.mjs
     fuga
     hoge
-    ```
-
-## 補足
-
-+ `import`/`export` 文は {...} の中では動作しない
-
-    例えば、以下のような条件付きのインポートは動作しない
-    ```
-    if (something) {
-        import {sayHi} from "./say.js";
-    }
-    ```
-* 変数や関数の宣言と同様に、`import` 文は巻き上げ（ホイスティング: hoisting）が発生する
-
-    例えば、`import` した変数を `import` 文より前で使うことができる。
-    ```
-    console.log(xxx);
-    import xxx from "./hoge";
     ```

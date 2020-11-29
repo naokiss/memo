@@ -26,7 +26,7 @@
     $ npm init -y
     ```
 
- * webpack のインストール
+* webpack のインストール
 
     ```
     $ npm install webpack webpack-cli --save-dev
@@ -37,7 +37,50 @@
     webpack 5.6.0
     ```
 
+## ファイルを準備
 
+* ディレクトリ構成
+
+    ```
+    /
+    ├── package.json
+    ├── public
+    │   ├── index.html
+    │   └── js
+    │       └── bundle.js
+    ├── src
+    │   └── js
+    │       ├── index.js
+    │       └── modules
+    │           ├── hello.js
+    │           └── tax.js
+    └── webpack.config.js
+    ```
+
+* webpack.config.js
+
+    ```JavaScript
+    const path = require('path');
+
+    module.exports = {
+        // モード( development/production/none )
+        mode: 'development',
+        // エントリーポイント
+        entry: './src/js/index.js',
+        // 出力先
+        output: {
+            // 出力ファイル名
+            filename: 'bundle.js',
+            // 出力ディレクトリ名
+            path: path.join(__dirname, 'public/js')
+        }
+    }
+    ```
+
+* index.js
+
+    ```JavaScript
+    ```
 
 
 
