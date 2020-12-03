@@ -6,10 +6,12 @@
 
 1. [サクラエディタ](https://sakura-editor.github.io/) をインストールする
 
+1. [Visual Studio Code](https://code.visualstudio.com/) をインストールする
+
 ### git for windows インストール
 
 1. [git for windows](https://gitforwindows.org/) インストール をダウンロードする
-
+![ダウンロードページ](./images/setup1.png)  
 
 1. インストーラーを実行する
 
@@ -17,13 +19,13 @@
 
     同意して [Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h06_45.png)
+    ![セットアップ](./images/setup2.png)  
 
 1. インストールフォルダの指定
 
     デフォルトのままで。 [Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h07_24.png)
+    ![セットアップ](./images/setup3.png)  
 
 1. コンポートネットを選択
 
@@ -37,11 +39,11 @@
 
         - Git Bash Here
 
-            エクスプローラーのコンテキストメニューに `Git Bash Here` 追加する
+            エクスプローラーのコンテキストメニューに `Git Bash Here` を追加する
 
         - Git GUI Here
 
-            エクスプローラーのコンテキストメニューに `Git GUI Here` 追加する
+            エクスプローラーのコンテキストメニューに `Git GUI Here` を追加する
 
     * Git LFS(Large File Support)
 
@@ -63,15 +65,19 @@
     
         `Git for Windows` のアップデートを確認する
 
-    ![image.png](images/2020-09-10_14h10_06.png)
+    ![セットアップ](./images/setup4.png)  
 
 1. メニューフォルダーを選択
 
     デフォルトのままで。 [Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h10_18.png)
+    ![セットアップ](./images/setup5.png)  
 
 1. デフォルトのエディタを設定
+    
+    * Use the Nano editor by default
+
+        Nanoエディタをデフォルで使用する
 
     * Use Vim(the ubiquitous text editor) as Git’s default editor
     
@@ -105,9 +111,13 @@
 
         上記以外のエディタをデフォルで使用する
 
-    ここでは、サクラエディタをデフォルトのエディタとして設定して、[Next] を クリックする
+    ここでは、Visual Studio Codeをデフォルトのエディタとして設定して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h10_35.png)
+    ![セットアップ](./images/setup6.png)  
+
+1. override the default branch name for new repositories  
+を選択しデフォルトのブランチをmainにする  
+![セットアップ](./images/setup7.png)  
 
 1. 環境変数 `PATH` 設定
 
@@ -141,7 +151,7 @@
 
     ここでは、`Use Git from Git Bash only` を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h10_48.png)
+    ![セットアップ](./images/setup9.png)  
 
 1. HTTPS (SSL)通信のバックエンドを選択
 
@@ -167,7 +177,7 @@
 
     ここでは、デフォルトで選択されている「Use the OpenSSL library」を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h10_57.png)
+    ![セットアップ](./images/setup10.png)  
 
 1. 改行コードの自動変換を選択
 
@@ -193,7 +203,7 @@
 
     ここでは、勝手に改行コードを変換されたくないので、`Checkout as-is, commit as-is` を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h11_09.png)
+    ![セットアップ](./images/setup11.png)  
 
 1. Git Bash で使うターミナルエミュレータの設定
 
@@ -207,7 +217,7 @@
 
     ここでは、デフォルトの `Use MinTTY(the default terminal of MSYS2)` を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h11_19.png)
+    ![セットアップ](./images/setup12.png)  
 
 1. `git pull` のデフォルトの動作設定
 
@@ -232,23 +242,23 @@
 
     ここでは、デフォルトの `Default (fast-forward or merge)` を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h11_31.png)
+    ![セットアップ](./images/setup13.png)  
 
 1. 認証情報の保存
-
-    * None
-    
-        + 認証情報の保存は行わない
-
-    * Git Credential Manager
-
-        + [Git Credential Manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) を利用して認証情報を保存する
 
     * Git Credential Manager Core
 
         + [Git Credential Manager Core](https://github.com/microsoft/Git-Credential-Manager-Core) を利用して認証情報を保存する
 
-    ![image.png](images/2020-09-10_14h16_14.png)
+    * Git Credential Manager
+
+        + [Git Credential Manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) を利用して認証情報を保存する
+
+    * None
+    
+        + 認証情報の保存は行わない
+
+    ![セットアップ](./images/setup14.png)  
 
 1. 追加オプション設定
 
@@ -258,6 +268,11 @@
         + `fscache` が `true` に設定される
         + 大幅なパフォーマンス向上する
         + git config --global core.fscache true
+    
+    * Enable Git Credential Manager  
+        + チェックでGit Credential Managerをインストール  
+        + httpsでリモートリポジトリに接続する際に毎回認証する手間が省る  
+        + 認証情報の保存にはWindowsの資格情報マネージャーが使用される
 
     * Enable symbolic links
     
@@ -266,7 +281,7 @@
 
     ここでは `Enable file system caching`を選択して、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h16_49.png)
+    ![セットアップ](./images/setup15.png)
 
 1. 試験運用オプション
 
@@ -276,12 +291,8 @@
 
     ここでは 選択せずに、[Next] を クリックする
 
-    ![image.png](images/2020-09-10_14h17_02.png)
-
-1. インストール中...
-
-    ![image.png](images/2020-09-10_14h17_11.png)
+    ![セットアップ](./images/setup16.png)  
 
 1. インストール完了。[Next] を クリックしてお疲れ様でした！
 
-    ![image.png](images/2020-09-10_14h17_38.png)
+    ![セットアップ](./images/setup17.png)
