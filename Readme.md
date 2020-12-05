@@ -7,6 +7,8 @@
 * [WSL2 関連](wsl2/Readme.md)
     + [Windows Subsystem for Linux のインストール](wsl2/install-wsl2.md)
     + [Ubuntu セットアップ](wsl2/setup-ubuntu.md)
+    + [WSL上の 手動でディストリビューションをインポートする](wsl2/import.md)
+
 * [Windows Terminal 関連](WindowsTerminal/Readme.md)
     + [Git Bashを追加する](WindowsTerminal/setup-git-bash.md)
 * [PowerShell 関連](PowerShell/Readme.md)

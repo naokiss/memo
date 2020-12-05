@@ -62,6 +62,18 @@
 
 1. `Microsoft Store` を開き、`Linux` ディストリビューションをインストールする
 
+   現在(2020/12/05)の `Windows Store` には3つの「Ubuntu」が存在する
+
+   * 「Ubuntu」：現在の最も新しい「Ubuntu LTS」
+      + 現在の「Ubuntu」は「Ubuntu 20.04」
+      + 自動アップデートはされないので、下記のコマンドでアップデートする
+         ```
+         $ sudo do-release-upgrade
+         ```
+   * 「Ubuntu 18.04」：2023年04月まで利用可能なLTS版
+   * 「Ubuntu 20.04」：2025年04月まで利用可能なLTS版
+
+   
    ここでは、`Ubuntu 18.04 LTS` をインストールする
 
 1. `Ubuntu` を起動する
