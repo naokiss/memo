@@ -182,3 +182,15 @@
       docker-desktop         Running         2
       Alpine                 Stopped         2
     ```
+
+## デフォルトユーザーを変更する
+
+  `Windows PowerShell` を起動し、以下の Function を定義する
+  ```PowerShell
+  Function WSL-SetDefaultUser ($distro, $user) { Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq $distro | Set-ItemProperty -Name DefaultUid -Value ((wsl -d $distro -u $user -e id -u) | Out-String); };
+  ```
+
+  以下のコマンドでデフォルトユーザーを変更する
+  ```
+  WSL-SetDefaultUser {ディストリビューション名} {ユーザー名}
+  ```
