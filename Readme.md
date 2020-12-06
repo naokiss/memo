@@ -8,6 +8,8 @@
     + [Windows Subsystem for Linux のインストール](wsl2/install-wsl2.md)
     + [Ubuntu セットアップ](wsl2/setup-ubuntu.md)
     + [WSL上の 手動でディストリビューションをインポートする](wsl2/import.md)
+    + [LS_COLORS の設定を変更する](wsl2/ls_colors.md)
+
 
 * [Windows Terminal 関連](WindowsTerminal/Readme.md)
     + [Git Bashを追加する](WindowsTerminal/setup-git-bash.md)
