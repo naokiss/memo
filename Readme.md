@@ -11,6 +11,7 @@
 
 * [Windows Terminal 関連](WindowsTerminal/Readme.md)
     + [Git Bashを追加する](WindowsTerminal/setup-git-bash.md)
+    + [Windows Terminal のデフォルトのキー割り当て](WindowsTerminal/key.md)
 * [PowerShell 関連](PowerShell/Readme.md)
     + [実行ポリシーの設定](PowerShell/policy.md)
 * [SharePoint 関連](SharePoint/Readme.md)
