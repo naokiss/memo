@@ -194,3 +194,13 @@
   ```
   WSL-SetDefaultUser {ディストリビューション名} {ユーザー名}
   ```
+
+## 起動時のディレクトリをLinuxのホームディレクトリにする
+
+  `Windows Terminal` から起動する場合は、設定を開き、   
+  以下のように `startingDirectory` を指定したいディレクトリを指定する
+  ```
+  "startingDirectory": "\\\\wsl$\\{ディストリビューション名}\\home\\{ユーザー名}"
+  ```
+
+  ![](images/capture5.png)
