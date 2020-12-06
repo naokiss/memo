@@ -1,46 +1,47 @@
 # Babelコマンド 
 
+Babel を使って、es6の記法がes5の記法に変換する
+
 ## 環境
 
 * Ubuntu 18.04
-* node v8.10.0
-* npm 3.5.2
+* node v14.15.1
+* npm 6.14.8
 
 ## 事前準備
 
 * nodejs をインストール
-    ```
+    ```console
     $ sudo apt install nodejs
     ```
 * npm をインストール
-    ```
+    ```console
     $ sudo apt install npm
     ```
 * プロジェクトディレクトリの作成
-    ```
+    ```console
     $ mkdir sample-app
     $ npm init -y
     ```
 
  * Babel CLI のインストール
 
-    ```
+    ```console
     $ npm install --save-dev babel-cli
-    $ export PATH=$PATH:./node_modules/.bin
-    $ babel --version
+    $ npx babel --version
     6.26.0 (babel-core 6.26.3)
     ```
 
-* babel-preset-es2015 のインストール
+* babel-preset-env のインストール
 
-    ```
-    $ npm install --save-dev babel-preset-es2015
-    $ echo '{ "presets": ["es2015"] }' > .babelrc
+    ```console
+    $ npm install babel-preset-env --save-dev
+    $ echo '{ "presets": ["env"] }' > .babelrc
     ```
 
 * js ファイルの準備
 
-    ```
+    ```JavaScript
     # script.js
 
     class App {
@@ -59,51 +60,67 @@
 * ファイルをコンパイルする
 
     標準出力に表示される
-    ```
-    $ babel script.js
+    ```console
+    $ npx babel script.js
     ```
 
+    es5の記法に変換された
+    ```JavaScript
+    'use strict';
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    var App = function App() {
+        _classCallCheck(this, App);
+
+        console.log('constructor');
+    };
+
+    var func = function func() {
+        cosole.log('function');
+    };
+    ```
 * コンパイル結果を指定したファイルに出力する
 
     `––out-file` または `-o` オプションをつける
     ```
-    $ babel script.js --out-file script-compiled.js
+    $ npx babel script.js --out-file script-compiled.js
     ```
 
 * ファイルの変更を監視してコンパイルする
 
     `––watch` または `-w` オプションをつける
     ```
-    $ babel script.js --watch --out-file script-compiled.js
+    $ npx babel script.js --watch --out-file script-compiled.js
     ```
 * コンパイル時にソースマップも作成する
 
     `––source-maps` または `-s` オプションをつける
     ```
-    $ babel script.js --out-file script-compiled.js --source-maps
+    $ npx babel script.js --out-file script-compiled.js --source-maps
     ```
 
     コンパイルしたjsファイルにソースマップを含める場合は   
     `––source-maps inline` オプションをつける
     ```
-    $ babel script.js --out-file script-compiled.js --source-maps inline
+    $ npx babel script.js --out-file script-compiled.js --source-maps inline
     ```
 
 * ディレクトリごとコンパイルする
 
     `––out-dir` または `-d` オプションをつけ、ディレクトリ名を指定する
     ```
-    $ babel src --out-dir lib
+    $ npx babel src --out-dir lib
     ```
 
     `––out-file` オプションをつけると、一つのファイルに結合して出力する
     ```
-    $ babel src --out-dir lib
+    $ npx babel src --out-dir lib
     ```
 
 * コンパイル時にファイルを圧縮するオプション
 
     `––compact=true` オプションをつける
     ```
-    $ babel script.js --compact=true -o script-compiled.js
+    $ npx babel script.js --compact=true -o script-compiled.js
     ```
