@@ -112,14 +112,16 @@
    ```
 
 a) `WSL 2` のCPU、メモリ割り当てをする
-    [ユーザープロファイル]\.wslconfig 作成し、以下のように、CPU2コア、メモリ2GBを割り当てる
+    [ユーザープロファイル]\.wslconfig 作成し、以下のように、CPUを2コア、メモリを2GB、swapwを0に割り当てる
 
-   ※ https://docs.microsoft.com/ja-jp/windows/wsl/wsl-config#configure-global-options-with-wslconfig
+   ※ https://docs.microsoft.com/ja-jp/windows/wsl/wsl-config#configure-global-options-with-wslconfig   
+   ※ SSD等で大量のスワップIn/Outの発生を防ぐため、大量書き込みによるSSDの寿命を縮めることは回避
 
    ```
    [wsl2]
    memory=2GB
    processors=2
+   swap=0
    ```
 
    `WSL` を再起動する
