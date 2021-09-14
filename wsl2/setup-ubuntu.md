@@ -103,4 +103,16 @@
     $ sudo apt -y install manpages-ja manpages-ja-dev
     ```
 
+1. WSL の PATH から Windows の PATH を削除する
 
+    ```
+    $ sudo vi /etc/wsl.conf
+    ```
+
+    以下のように記載する
+    ```
+    [interop]
+    appendWindowsPath=false
+    ```
+    
+    WSLを再起動する
