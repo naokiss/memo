@@ -41,7 +41,7 @@
 
     `hello` を呼び出すモジュールを作成する
     ```JavaScript
-    const hellp = require('hello');
+    const hell = require('hello');
 
     console.log(hello);    
     ```
