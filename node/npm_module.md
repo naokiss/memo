@@ -43,22 +43,28 @@
     + `Node.js 13.2.0` 以前のバージョンでは、`--experimental-modules`フラグ付きで起動したときのみ、`ECMAScript Modules`をサポートしていたが、`13.2.0`からフラグなしで `import` が可能になった
     + `require`、`exports`、`module.exports`, `__filename`, `__dirname` といった `Node.js` 特有のグローバル変数や関数は ESM では利用できない
         - `module.createRequire` 関数を使うことで `require 関数`を生成できる
+
             ```
             import module from "module";
             const require = module.createRequire(import.meta.url);
 
             const packageJson = require("../package.json");
             ```
+
         - `fileURLToPath` 関数を使うことで `__filename` を生成できる
+
             ```
             import { fileURLToPath } from 'url';
             const __filename = fileURLToPath(import.meta.url);
             ```
+
         - `dirname` 関数を使うことで `__dirname` を生成できる
+
             ```
             import { dirname } from 'path';
             const __dirname = dirname(__filename);
             ```
+
 ## モジュールの理解
 
 `Node.js` の `v14.15.1` で確認する
