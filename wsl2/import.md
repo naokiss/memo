@@ -116,9 +116,9 @@
 
         https://cloud-images.ubuntu.com/focal/current
 
-    + Ubuntu 20.10 (Groovy)
+    + Ubuntu 21.04 (Hirsute)
 
-        https://cloud-images.ubuntu.com/groovy/current/
+        https://cloud-images.ubuntu.com/hirsute/current/
 
     ```
     > wsl --import ubuntu-focal c:\Mywsl\ubuntu-focal focal-server-cloudimg-amd64-wsl.rootfs.tar.gz --version 2
