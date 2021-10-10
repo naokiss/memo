@@ -71,7 +71,7 @@
 1. ssh サービスを起動する
 
    ```sh
-   sudo systemctl start ssh
+   sudo systemctl start vncserver-x11-serviced
    ```
 
 ### VNC の有効化 (GUI で有効化する場合)
