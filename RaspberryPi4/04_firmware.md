@@ -42,6 +42,7 @@
    ![](images/firmware/4.png)
 
    [A7 Bootloader Version] を選択する
+
    ![](images/firmware/5.png)
 
    [E1 Latest] を選択する
