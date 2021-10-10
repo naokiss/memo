@@ -108,6 +108,8 @@
 
 1. [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) をダウンロードして、起動する
 
+   今回は `Standalone EXE x64` をダウンロードした
+   
    初回起動時は以下のような画面が表示されます。使用統計データを送りたくない場合は「Send anonymous usage data to help improve VNC Viewer」のチェックを外す
 
    「GOT IT」をクリックして画面を閉じる
