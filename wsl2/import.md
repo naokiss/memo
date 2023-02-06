@@ -72,14 +72,26 @@
     Release:        18.04
     Codename:       bionic
     ```
-6. `windows` から `WSL` ファイルシステムへのアクセス
+
+6. ログイン設定
+   デフォルトユーザーが `root` になっているので変更する
+
+   `PowerShell` を開き、関数を定義する。
+   作成した関数に 第一引数：ディストリビューション名、第二引数にユーザー名を指定して実行する
+
+   ```PowerShell
+   > Function WSL-SetDefaultUser ($distro, $user) { Get-ItemProperty Registry::HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss\*\ DistributionName | Where-Object -Property DistributionName -eq $distro | Set-ItemProperty -Name DefaultUid -Value ((wsl -d $distro -u $user -e id -u) | Out-String); };
+   > WSL-SetDefaultUser Ubuntu-18.04-copy taro
+   ```
+
+7. `windows` から `WSL` ファイルシステムへのアクセス
 
     エクスプローラを開き、パスに `\\wsl$` を入力すると、    
     `WSL` のディストリビューション毎のファイルシステムにアクセスできる
 
     ![](images/capture3.png)
 
-7. 不要なったディストリビューションの削除
+8. 不要なったディストリビューションの削除
 
     以下の形式で登録を解除する
     ```
