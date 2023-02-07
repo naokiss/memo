@@ -130,8 +130,13 @@
 
    - Vim のビープ音を消す
      `~/.vimrc` に以下を追記
+
      ```bash
      set belloff=all
      ```
 
 1. WSL を再起動する
+
+   ```cmd
+   wsl --shutdown
+   ```
