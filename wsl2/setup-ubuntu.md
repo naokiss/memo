@@ -3,32 +3,32 @@
 1. 日本のサーバーから更新ファイルを取得するよう設定を変更する
 
    ```bash
-   $ sudo sed -i 's/\/archive\.ubuntu/\/jp\.archive\.ubuntu/' /etc/apt/sources.list
+   sudo sed -i 's/\/archive\.ubuntu/\/jp\.archive\.ubuntu/' /etc/apt/sources.list
    ```
 
 1. パッケージの更新とアップグレード
 
    ```bash
-   $ sudo apt -y update
-   $ sudo apt -y upgrade
+   sudo apt -y update
+   sudo apt -y upgrade
    ```
 
 1. 日本語言語パックのインストール
 
    ```bash
-   $ sudo apt -y install language-pack-ja
+   sudo apt -y install language-pack-ja
    ```
 
 1. ロケールを日本語に設定
 
    ```bash
-   $ sudo update-locale LANG=ja_JP.UTF-8
+   sudo update-locale LANG=ja_JP.UTF-8
    ```
 
    ※英語に戻したい場合は
 
    ```bash
-   $ sudo update-locale LANG=en_US.UTF8
+   sudo update-locale LANG=en_US.UTF8
    ```
 
 1. Ubuntu を再起動
@@ -36,29 +36,29 @@
    特定のディストリを終了
 
    ```cmd
-   > wsl --terminate <ディストリ名>
+   wsl --terminate <ディストリ名>
          or
-   > wsl -t <ディストリ名>
+   wsl -t <ディストリ名>
    ```
 
    ディストリビューションのステータス確認
 
    ```cmd
-   > wsl -l -v
+   wsl -l -v
    ```
 
    すべてのディストリを終了
 
    ```cmd
-   > wsl --shutdown
+   wsl --shutdown
    ```
 
    ```cmd
-   > wsl --terminate Ubuntu-18.04
+   wsl --terminate Ubuntu-18.04
    ```
 
    ```cmd
-   > wsl -l -v
+   wsl -l -v
    ```
 
 1. Ubuntu を再起動後の確認
@@ -85,53 +85,96 @@
    ```
 
    ```bash
-   $ echo $LANG
+   echo $LANG
    ja_JP.UTF-8
    ```
 
    ```bash
-   $ date
+   date
    2020年 11月  1日 日曜日 19:42:29 JST
    ```
 
 1. タイムゾーン設定を日本時間（JST）にする
 
    ```bash
-   $ sudo dpkg-reconfigure tzdata
+   sudo dpkg-reconfigure tzdata
    ```
 
 1. 日本語マニュアルのインストール
 
    ```bash
-   $ sudo apt -y install manpages-ja manpages-ja-dev
+   sudo apt -y install manpages-ja manpages-ja-dev
+   ```
+
+1. `systemd` を有効にする
+
+   `/etc/wsl.conf` に以下を追記
+
+   ```ini
+   [boot]
+   systemd=true
    ```
 
 1. WSL の PATH から Windows の PATH を削除する
 
-   ```bash
-   $ sudo vi /etc/wsl.conf
-   ```
+   `/etc/wsl.conf` に以下のように記載する
 
-   以下のように記載する
-
-   ```text
+   ```ini
    [interop]
    appendWindowsPath=false
+   ```
+
+1. パーミッションの設定
+
+   `/etc/wsl.conf` に以下を追記
+
+   ```ini
+   [automount]
+   enabled = true
+   options = "metadata, umask=22, fmask=11"
+   mountFsTab = false
+   ```
+
+   `~/.profile` に以下を追記
+
+   ```bash
+   if [ "$(umask)" = "0000" ]; then
+      umask 0022
+   fi
+   ```
+
+1. sshでパスフレーズを省略
+
+   `~/.bashrc` に以下を追記
+
+   ```bash
+   SSH_ENV=~/.ssh-agent
+   if [ -f ~/.ssh-agent ]; then
+      . ~/.ssh-agent
+   fi
+   if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
+      ssh-agent | sed 's/^echo/#echo/' > $SSH_ENV
+      chmod 600 $SSH_ENV
+      . $SSH_ENV
+   fi
+   ssh-add -l >& /dev/null || ssh-add
    ```
 
 1. ビープ音を消す
 
    - コマンドラインのビープ音を消す
-     `~/.inputrc` にに以下を追記
 
-     ```bash
+     `~/.inputrc` に以下を追記
+
+     ```conf
      set bell-style none
      ```
 
    - Vim のビープ音を消す
+
      `~/.vimrc` に以下を追記
 
-     ```bash
+     ```conf
      set belloff=all
      ```
 
