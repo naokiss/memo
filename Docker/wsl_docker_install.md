@@ -7,56 +7,68 @@
     ```sh
     sudo apt update
     ```
+
     ```sh
     sudo apt upgrade
     ```
 
-2. パッケージのインストール
+1. パッケージのインストール
 
     ```sh
     sudo apt-get install ca-certificates curl gnupg lsb-release
     ```
 
-3. Docker の公式 GPG キーを追加
+1. Docker の公式 GPG キーを追加
 
     ```sh
     sudo mkdir -p /etc/apt/keyrings
     ```
+
     ```sh
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     ```
 
-4. Dockerリポジトリ情報の更新する
+1. Dockerリポジトリ情報の更新する
 
     ```sh
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-5. aptパッケージ インデックスを更新
+1. aptパッケージ インデックスを更新
 
     ```sh
     sudo apt-get update
     ```
 
-6. Docker Engine(Docker Engine、containerd、および Docker Compose) のインストール
+1. Docker Engine(Docker Engine、containerd、および Docker Compose) のインストール
 
     ```sh
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
     ```
 
-7. Docker service 起動
+1. Docker service 起動
 
     ```sh
+    sudo systemctl start docker
+    # または
     sudo service docker start
     ```
 
-8. 動作確認
+1. Docker service を自動起動設定
+
+    ```sh
+    sudo systemctl enable docker
+    # または
+    sudo chkconfig docker on
+    ```
+
+1. 動作確認
 
     ```sh
     sudo docker run hello-world
     ```
 
-9. Docker Engine の権限設定
+1. Docker Engine の権限設定
 
     sudo 無しでdockerを実行させるため、Docker Group にユーザーを所属させる。
 
@@ -78,19 +90,19 @@
     sudo curl -SL "https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/lib/docker/cli-plugins/docker-compose
     ```
 
-2. 実行権限を付与する
+1. 実行権限を付与する
 
     ```sh
     sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     ```
 
-3. シンボリックリンクを作成する
+1. シンボリックリンクを作成する
 
     ```sh
     sudo ln -s /usr/local/lib/docker/cli-plugins/docker-compose /usr/bin/docker-compose
     ```
 
-4. バージョン確認
+1. バージョン確認
 
     ```sh
     $ docker-compose --version
