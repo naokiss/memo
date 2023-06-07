@@ -55,6 +55,11 @@
     ```
     git config --global core.quotepath false
     ```
+- ファイル名の大文字・小文字を区別する
+
+   ```
+   git config --global core.ignorecase false
+   ``` 
 
 - 差分比較・マージの設定
 
